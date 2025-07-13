@@ -22,3 +22,10 @@ I also generated some successful login data. I created a search which showcased 
 
 ![Screenshot of Splunk search screen](https://github.com/user-attachments/assets/6b86f260-7445-4439-a5b9-e3bc796c2282)
 
+This search showcases a count of successful and unsuccessful login attempts. This was achieved via custom field extraction with the following steps:
+* The first part of the search is piped to "eval", which creates a new custom field called "login_status"
+* An "if" statement is used in conjunction with "like" to search through the results. If the log contains "Failed password", it is classed as a "Failed" element. If it contains anything else, it is called as a "Successful element
+* The result of this is piped to the "stats" function, which creats a "count" table based on the "login_status" field.
+
+![Screenshot of Splunk search screen](https://github.com/user-attachments/assets/8e35b869-d90c-4760-ba63-12b3f56d30ad)
+
